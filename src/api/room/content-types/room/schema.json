@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "rooms",
+  "info": {
+    "singularName": "room",
+    "pluralName": "rooms",
+    "displayName": "Room",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "password": {
+      "type": "string"
+    },
+    "state": {
+      "type": "json"
+    },
+    "is_private": {
+      "type": "boolean",
+      "default": false
+    },
+    "owner": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "rooms"
+    },
+    "joiner": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "rooms"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "inprogress",
+        "completed",
+        "waiting_for_joiner"
+      ],
+      "default": "waiting_for_joiner"
+    }
+  }
+}

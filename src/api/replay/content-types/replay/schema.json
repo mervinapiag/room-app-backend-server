@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "replays",
+  "info": {
+    "singularName": "replay",
+    "pluralName": "replays",
+    "displayName": "Replays"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "my_replays": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "replays"
+    },
+    "actions": {
+      "type": "json"
+    }
+  }
+}
